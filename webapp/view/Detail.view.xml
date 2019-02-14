@@ -1,0 +1,67 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.sap.faultyAddresses.controller.Detail" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap" xmlns:form="sap.ui.layout.form">
+	<m:Page title="" showHeader="false" showFooter="true" showNavButton="false">
+		<m:content>
+			<uxap:ObjectPageHeader condensed="true">
+				<uxap:actions>
+					<uxap:ObjectPageHeaderActionButton hideText="false" text="Edit" type="Default" icon="sap-icon://edit" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="_onEdit" />
+				</uxap:actions>
+			</uxap:ObjectPageHeader>
+			<m:ObjectHeader intro="" title="Current Address" icon="sap-icon://addresses" number="" numberUnit="" numberState="None"
+				showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Transparent" condensed="false">
+				<m:attributes>
+					<m:ObjectAttribute id="attrAddress" title="Shipping Address" text="{ShippingAddress}" active="false"/>
+					<m:ObjectAttribute id="attrPostcode" title="Postcode" text="{Postcode}" active="false"/>
+					<m:ObjectAttribute id="attrCity" title="City" text="{City}" active="false"/>
+					<m:ObjectAttribute id="attrCountry" title="Country" text="{Country}" active="false"/>
+					<m:ObjectAttribute title="ID" text="{AddressID}" active="false"/>
+				</m:attributes>
+				<m:firstStatus>
+                    <m:ObjectStatus title="DQM Response" text="{path: 'DQMResponse', formatter: '.formatDQMResponse'}" state="None"/>
+                </m:firstStatus>
+			</m:ObjectHeader>
+			<m:IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true"
+				selectedKey="Ok">
+				<m:items>
+					 <m:IconTabFilter icon="sap-icon://hint" iconColor="Default" text="Suggestions" count="" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+                        <m:content/>
+                    </m:IconTabFilter>
+                </m:items>
+                <m:content>
+                    <m:List id="suggestionList" mode="SingleSelectLeft" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" items="{to_Suggestion}">
+                        <m:infoToolbar>
+                            <m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+                                <m:content>
+                                    <m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                                </m:content>
+                            </m:Toolbar>
+                        </m:infoToolbar>
+                        <m:headerToolbar/>
+                        
+                    <m:InputListItem label="{SingleAddress}">
+						<m:Input
+							placeholder="{path: '', formatter: '.formatPlaceholder'}"
+							value=""
+							type="Number"
+							visible="{path: '', formatter: '.formatInputVisible'}"
+							width="30%"/>
+					</m:InputListItem>
+                    </m:List>
+				</m:content>
+			</m:IconTabBar>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentLeft/>
+				<m:contentMiddle/>
+				<m:contentRight>
+					<m:Button text="Accept" type="Accept" icon="sap-icon://accept" iconFirst="true" width="auto" visible="{path: 'QualityLevel', formatter: '.formatAccept'}"
+						iconDensityAware="false" press="_onAccept"/>
+					<m:Button text="Delete" type="Delete" icon="sap-icon://delete" iconFirst="true" width="auto" visible="{path: 'QualityLevel', formatter: '.formatDelete'}"
+						iconDensityAware="false" press="_onDelete"/>
+				</m:contentRight>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent/>
+	</m:Page>
+</mvc:View>

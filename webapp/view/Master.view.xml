@@ -1,0 +1,40 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.sap.faultyAddresses.controller.Master" xmlns:m="sap.m" xmlns:core="sap.ui.core">
+	<m:Page title="" showHeader="false" showFooter="false" showNavButton="false">
+		<m:content>
+			<m:List id="MasterList" mode="SingleSelectMaster" width="100%" headerText="Faulty Addresses" footerText="" backgroundDesign="Solid" showSeparators="All"
+				growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onListItemPress" items="{/YY1_FAULTYADDRESS}">
+				<m:infoToolbar/>
+				<m:headerToolbar>
+					<m:Toolbar visible="true" enabled="true" width="" design="Solid">
+						<m:content>
+						<!--	<m:SearchField placeholder="Search" showSearchButton="true" visible="true" width="100%"/>-->
+							<m:ComboBox type="Text" id="ComboBox" selectedKey="LO" selectionChange="handleFilterchange">
+						     <m:items>
+						        <core:Item key="HI" text="Quality High"/>
+						        <core:Item key="LO" text="Quality Low"/>
+						     </m:items>
+						</m:ComboBox>	
+						</m:content>
+					</m:Toolbar>
+				</m:headerToolbar>
+				<m:items>
+					<m:ObjectListItem intro="" title="{ShippingAddress}" number="" numberUnit="" numberState="None" type="Active"
+						selected="false" showMarkers="false" press="_onObjectListItemPress">
+						<m:attributes>
+							<m:ObjectAttribute title="" text="{Postcode}" active="false"/>
+							<m:ObjectAttribute text="{City}" active="false"/>
+						</m:attributes>
+						<m:firstStatus>
+							<m:ObjectStatus text="{path: 'QualityLevel', formatter: '.formatQualityLevel'}" state="None"/>
+						</m:firstStatus>
+						<m:secondStatus>
+							<m:ObjectStatus text="" state="" icon=""/>
+						</m:secondStatus>
+					</m:ObjectListItem>
+				</m:items>
+			</m:List>
+		</m:content>
+		<m:footer/>
+		<m:headerContent/>
+	</m:Page>
+</mvc:View>

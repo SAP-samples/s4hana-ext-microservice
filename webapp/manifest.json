@@ -1,0 +1,169 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.2.0",
+		"id": "com.sap.build.sap.faultyAddresses",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"ach": "ach",
+		"resources": "resources.json",
+		"dataSources": {
+			"main": {
+				"uri": "/S4HC_BO_FaultyAddress/sap/opu/odata/sap/YY1_FAULTYADDRESS_CDS/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.32.5"
+		}
+	},
+	"sap.fiori": {
+		"_version": "1.1.0",
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.ui": {
+		"_version": "1.2.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": {
+			"viewName": "com.sap.build.sap.faultyAddresses.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.32.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"": {
+				"dataSource": "main",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"loadMetadataAsync": false,
+					"json": true,
+					"bJSON": true,
+					"defaultBindingMode": "TwoWay",
+					"useBatch": true,
+					"refreshAfterChange": false,
+					"disableHeadRequestForToken": true
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.sap.build.sap.faultyAddresses.view",
+				"controlId": "idAppControl",
+				"clearTarget": false,
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": [
+						"Detail",
+						"Master"
+					]
+				}
+			},
+			"targets": {
+				"Master": {
+					"controlAggregation": "masterPages",
+					"viewName": "Master",
+					"viewId": "Master",
+					"viewLevel": 1,
+					"transition": "slide"
+				},
+				"Detail": {
+					"controlAggregation": "detailPages",
+					"viewName": "Detail",
+					"viewId": "Detail",
+					"viewLevel": 2,
+					"transition": "slide"
+				},
+				"EditPage": {
+					"controlAggregation": "detailPages",
+					"viewName": "EditPage",
+					"viewId": "EditPage",
+					"viewLevel": 3,
+					"transition": "slide"
+				}
+			},
+			"routes": [
+				{
+					"pattern": "Master",
+					"name": "Master",
+					"target": [
+						"Detail",
+						"Master"
+					]
+				},
+				{
+					"pattern": "Master/Detail/:context:",
+					"name": "Detail",
+					"target": [
+						"Master",
+						"Detail"
+					]
+				},
+				{
+					"pattern": "Master/EditPage/:context:",
+					"name": "EditPage",
+					"target": [
+						"Master",
+						"EditPage"
+					]
+				},
+				{
+					"pattern": "",
+					"name": "default",
+					"target": [
+						"Detail",
+						"Master"
+					]
+				}
+			]
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

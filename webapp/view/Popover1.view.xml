@@ -1,0 +1,11 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.sap.faultyAddresses.controller.Popover1" xmlns:m="sap.m">
+	<m:Popover bounce="false" contentHeight="350px" contentWidth="250px" horizontalScrolling="true" modal="false" offsetX="0" offsetY="0"
+		placement="Right" showHeader="true" title="Title" verticalScrolling="true" visible="true">
+		<m:content/>
+		<m:beginButton/>
+		<m:customHeader/>
+		<m:endButton/>
+		<m:footer/>
+		<m:subHeader/>
+	</m:Popover>
+</mvc:View>
