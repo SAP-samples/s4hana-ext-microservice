@@ -1,3 +1,4 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/s4hana-ext-microservice)](https://api.reuse.software/info/github.com/SAP-samples/s4hana-ext-microservice)
 # SAP S/4HANA Cloud Extensions - Validate Customer Addresses Using a Microservice
 This repository contains the sample code for the [Validate Customer Addresses Using a Microservice tutorial](http://tiny.cc/s4-ext-microservice).
 
