@@ -16,7 +16,7 @@ SAP Extensibility Explorer is a central place where anyone involved in the exten
 
 Requirements
 -------------
-- An account in SAP Cloud Platform with a subaccount in the Neo environment having Web IDE and SAP Data Quality Management microservices enabled.
+- An account in SAP Business Technology Platform (BTP) with a subaccount in the Neo environment having Web IDE and SAP Data Quality Management microservices enabled.
 - An SAP S/4HANA Cloud tenant. **This is a commercial paid product.**
 
 Download and Installation
